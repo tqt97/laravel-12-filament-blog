@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use Awcodes\LightSwitch\Enums\Alignment;
+use Awcodes\LightSwitch\LightSwitchPlugin;
 use CWSPS154\AppSettings\AppSettingsPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -66,6 +68,8 @@ class AdminPanelProvider extends PanelProvider
                     })
                     ->appAdditionalField([]),
                 FilamentProgressbarPlugin::make()->color('#29b'),
+                LightSwitchPlugin::make()
+                    ->position(Alignment::TopCenter),
             ])
             ->spa();
     }

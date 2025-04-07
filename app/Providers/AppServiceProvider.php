@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use BezhanSalleh\FilamentLanguageSwitch\Enums\Placement;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use DB;
 use Illuminate\Database\Eloquent\Model;
@@ -37,8 +38,8 @@ class AppServiceProvider extends ServiceProvider
                     'en' => 'English (EN)',
                 ])
                 ->displayLocale('vi')
-                ->visible(outsidePanels: true);
-            // ->outsidePanelPlacement(Placement::BottomRight); // also accepts a closure
+                ->visible(outsidePanels: true)
+                ->outsidePanelPlacement(Placement::TopRight); // also accepts a closure
         });
     }
 }
