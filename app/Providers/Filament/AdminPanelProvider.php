@@ -21,6 +21,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
+use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -70,6 +71,13 @@ class AdminPanelProvider extends PanelProvider
                 FilamentProgressbarPlugin::make()->color('#29b'),
                 LightSwitchPlugin::make()
                     ->position(Alignment::TopCenter),
+                FilamentBackgroundsPlugin::make()
+                    ->showAttribution(false)
+                    ->remember(900),
+                // ->imageProvider(
+                //     MyImages::make()
+                //         ->directory('images/backgrounds')
+                // ),
             ])
             ->spa();
     }
