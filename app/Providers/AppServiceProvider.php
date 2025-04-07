@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
@@ -26,5 +27,18 @@ class AppServiceProvider extends ServiceProvider
 
         // Prevent run some command in production
         DB::prohibitDestructiveCommands(! $this->app->isProduction());
+
+        LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
+            $switch
+                ->circular()
+                ->locales(['vi', 'en'])
+                ->labels([
+                    'vi' => 'Vietnamese (VI)',
+                    'en' => 'English (EN)',
+                ])
+                ->displayLocale('vi')
+                ->visible(outsidePanels: true);
+            // ->outsidePanelPlacement(Placement::BottomRight); // also accepts a closure
+        });
     }
 }
